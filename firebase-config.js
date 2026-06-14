@@ -3,13 +3,12 @@ import { getAuth, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
 
 const firebaseConfig = {
-  apiKey:            "AIzaSyDo529Vcr8UGrvanBxE1XvwT549k8hdQLo",
-  authDomain:        "my-gallery-app-ca7ef.firebaseapp.com",
-  projectId:         "my-gallery-app-ca7ef",
-  storageBucket:     "my-gallery-app-ca7ef.firebasestorage.app",
-  messagingSenderId: "519411285354",
-  appId:             "1:519411285354:web:bd75ba9a18218d6c92f913",
-  measurementId:     "G-8MBNMJCY8P"
+  apiKey: "AIzaSyCZGZW7n6TIpZkvnW63rgoFSXXTo2Vrv78",
+  authDomain: "flutter-ai-playground-21a0c.firebaseapp.com",
+  projectId: "flutter-ai-playground-21a0c",
+  storageBucket: "flutter-ai-playground-21a0c.firebasestorage.app",
+  messagingSenderId: "100078759421",
+  appId: "1:100078759421:web:25d48e673c3a2a5059bd94"
 };
 
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];

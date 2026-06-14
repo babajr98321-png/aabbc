@@ -6,7 +6,6 @@ const path = require('path');
 const { Resend } = require('resend');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
-const { GoogleGenerativeAI } = require("@google/generative-ai");
 const cron = require('node-cron');
 const { collectStockNews } = require('./agent/hebrew_stock_agent');
 const app = express();
@@ -142,7 +141,7 @@ app.post(['/api/chat', '/chat'], async (req, res) => {
       return res.json({ text: "Sorry, I'm still learning and didn't understand the question. You can try rephrasing or visit our contact page. 😊" });
     }
 
-
+    const { GoogleGenerativeAI } = await import('@google/generative-ai');
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ 
       model: "gemini-2.5-flash",
@@ -186,7 +185,6 @@ app.get('/', (req, res) => {
 // Explicit route for other common pages
 app.get(['/login', '/login.html'], (req, res) => res.sendFile(path.join(process.cwd(), 'login.html')));
 app.get(['/success', '/success.html'], (req, res) => res.sendFile(path.join(process.cwd(), 'success.html')));
-
 
 // =============================================
 // OTP System - in-memory store
@@ -270,7 +268,6 @@ app.post('/api/customizations', (req, res) => {
 });
 
 // GET /api/articles - Returns all articles from the articles directory
-
 app.get('/api/articles', (req, res) => {
     try {
           const articlesDir = path.join(process.cwd(), 'articles');
@@ -568,4 +565,3 @@ cron.schedule('0 5 * * *', () => {
 console.log('📅 Stock news cron scheduled: daily at 05:00 Asia/Jerusalem');
 
 module.exports = app;
-// Force Redeploy Mon May 11 19:45:00 IDT 2026
